@@ -7,9 +7,9 @@ import com.elnaggar.data.TmdbService
 import com.elnaggar.data.entities.Person
 
 class TmdbDataSource(val service: TmdbService) {
-    suspend fun getPopularPerson(offset: Int): Result<List<Person>> {
+    suspend fun getPopularPerson(page: Int=1): Result<List<Person>> {
         try {
-            val result = service.getPopularPersons()
+            val result = service.getPopularPersons(page)
             return Success(result.results)
         } catch (e: Exception) {
             return ErrorResult(e)
