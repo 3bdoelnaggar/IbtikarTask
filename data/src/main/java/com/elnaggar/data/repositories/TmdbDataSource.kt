@@ -6,7 +6,7 @@ import com.elnaggar.Success
 import com.elnaggar.data.TmdbService
 import com.elnaggar.data.entities.Person
 
-class TmdbDataSource(val service: TmdbService) {
+class TmdbDataSource(private val service: TmdbService) {
     suspend fun getPopularPerson(page: Int=1): Result<List<Person>> {
         try {
             val result = service.getPopularPersons(page)

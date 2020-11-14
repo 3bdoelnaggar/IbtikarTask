@@ -1,12 +1,54 @@
 package com.elnaggar.ibtikartask.features.popularPeopleList
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.elnaggar.ibtikartask.R
+import android.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import com.elnaggar.ibtikartask.databinding.PopularPeopleListActivityBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class PopularPeopleListActivity : AppCompatActivity() {
+
+    lateinit var binding: PopularPeopleListActivityBinding
+
+    private val popularPeopleListViewModel: PopularPeopleListViewModel by viewModel()
+
+    private val popularPeopleController by lazy {
+        PopularPeopleController()
+    }
+    private var page = 1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.popular_people_list_activity)
+        binding = PopularPeopleListActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.popularListRc.setController(popularPeopleController)
+
+        popularPeopleListViewModel.getPopularPeopleList()
+        popularPeopleListViewModel.stateLiveData.observe(this) {
+            when (it) {
+                PopularPeopleListState.Error -> {
+
+
+                }
+                is PopularPeopleListState.Success -> popularPeopleController.setData(it.data)
+
+            }
+
+        }
+
+        binding.popularListRc.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (recyclerView.canScrollVertically(1).not() && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    page++
+                    popularPeopleListViewModel.getPopularPeopleList(page)
+
+
+                }
+            }
+        })
+
     }
 }
