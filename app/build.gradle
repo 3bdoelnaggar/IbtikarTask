@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -30,6 +31,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
+
+}
+kapt {
+    correctErrorTypes = true
 }
 
 dependencies {
@@ -46,5 +54,9 @@ dependencies {
     implementation "org.koin:koin-android:2.1.6"
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
+
+
+    implementation "com.airbnb.android:epoxy:4.1.0"
+    kapt "com.airbnb.android:epoxy-processor:4.1.0"
 
 }
