@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.elnaggar.ibtikartask.databinding.PopularPeopleListActivityBinding
-import com.elnaggar.ibtikartask.features.PersonDetails.PersonDetailsActivity
+import com.elnaggar.ibtikartask.features.personDetails.PersonDetailsActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 const val PERSON_ID_KEY = "person_id_key"
 class PopularPeopleListActivity : AppCompatActivity() {

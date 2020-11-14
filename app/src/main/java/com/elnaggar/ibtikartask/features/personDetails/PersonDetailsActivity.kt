@@ -1,4 +1,4 @@
-package com.elnaggar.ibtikartask.features.PersonDetails
+package com.elnaggar.ibtikartask.features.personDetails
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
