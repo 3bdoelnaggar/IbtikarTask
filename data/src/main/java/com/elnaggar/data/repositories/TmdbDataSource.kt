@@ -5,14 +5,24 @@ import com.elnaggar.Result
 import com.elnaggar.Success
 import com.elnaggar.data.TmdbService
 import com.elnaggar.data.entities.Person
+import com.elnaggar.data.entities.PersonDetails
 
 class TmdbDataSource(private val service: TmdbService) {
     suspend fun getPopularPerson(page: Int=1): Result<List<Person>> {
-        try {
+        return try {
             val result = service.getPopularPersons(page)
-            return Success(result.results)
+            Success(result.results)
         } catch (e: Exception) {
-            return ErrorResult(e)
+            ErrorResult(e)
+        }
+    }
+
+    suspend fun getPersonDetails(id: String): Result<PersonDetails> {
+        return try {
+            val result = service.getPersonDetails(id)
+            Success(result)
+        } catch (e: Exception) {
+            ErrorResult(e)
         }
     }
 }

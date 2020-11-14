@@ -6,4 +6,5 @@
     android:layout_height="match_parent"
     tools:context=".features.personDetails.PersonDetailsActivity">
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
