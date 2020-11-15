@@ -2,6 +2,7 @@ package com.elnaggar.ibtikartask
 
 import android.app.Application
 import com.elnaggar.data.di.networkModule
+import com.elnaggar.ibtikartask.features.personDetails.personDetailsModule
 import com.elnaggar.ibtikartask.features.popularPeopleList.popularPeopleModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -12,7 +13,7 @@ class App:Application() {
         super.onCreate()
         startKoin{
             androidContext(this@App)
-            modules(listOf(networkModule,popularPeopleModule))
+            modules(listOf(networkModule,popularPeopleModule, personDetailsModule))
         }
     }
 }

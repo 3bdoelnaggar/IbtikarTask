@@ -1,5 +1,6 @@
 package com.elnaggar.data
 
+import com.elnaggar.data.entities.Images
 import com.elnaggar.data.entities.Person
 import com.elnaggar.data.entities.PersonDetails
 import retrofit2.http.GET
@@ -17,4 +18,8 @@ interface TmdbService {
     //https://api.themoviedb.org/3/person/1397778?api_key=e5bacc18a0877161086a694a97bd477b
     @GET("person/{personId}?api_key=$API_KEY")
     suspend fun getPersonDetails(@Path("personId") id: String): PersonDetails
+
+    //https://api.themoviedb.org/3/person/1397778/images?api_key=e5bacc18a0877161086a694a97bd477b
+    @GET("person/{personId}/images?api_key=$API_KEY")
+    suspend fun getPersonImages(@Path("personId") id: String): Images
 }
