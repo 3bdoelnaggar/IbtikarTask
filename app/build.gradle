@@ -70,6 +70,10 @@ dependencies {
 
     testImplementation "com.google.truth:truth:0.40"
 
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.1.0'
+
+
 
 
 
